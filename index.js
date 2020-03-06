@@ -22,7 +22,7 @@ db.sequelize.sync();
 
 // simple route
 app.get('/', function (req, res) {
-    res.send('Welcome to Student Management API!');
+    res.status(200).send({"message": "Welcome to Student Management API!"});
 });
 
 app.post('/api/register', users.create);

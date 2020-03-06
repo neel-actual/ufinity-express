@@ -73,7 +73,6 @@ exports.commonStudents = async (req, res) => {
     const unique_students = [];
     let mssg = '';
 
-    // const condition = Array.isArray(req.query.teacher) ? { teacher: { [Op.or] : req.query.teacher } } : { teacher:  req.query.teacher };
     if (req.query.teacher) {
         try {
             const students = await Users.findAll({ attributes: ['student'], where: { teacher:  req.query.teacher } });
@@ -141,11 +140,10 @@ exports.suspend = (req, res) => {
 exports.notification = async (req, res) => {
     const teacher = req.body.teacher;
     let matches = req.body.notification.match(/@.+@.+\..+. |@.+@.+\..+./g);
-    matches = matches.map(match => match.trim().substr(1));
+    matches = matches ? matches.map(match => match.trim().substr(1)) : [];
 
     if (teacher) {
-        console.log(matches);
-        let students = await Users.findAll({ attributes: ['student'], where: { teacher: teacher } });
+        let students = await Users.findAll({ attributes: ['student'], where: { teacher: teacher, isSuspended: false } });
 
         students.forEach(function(stud) {
             if (matches.indexOf(stud.student) === -1) { matches.push(stud.student); }

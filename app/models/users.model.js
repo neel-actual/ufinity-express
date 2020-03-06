@@ -8,7 +8,7 @@ module.exports = (sequelize, Sequelize) => {
       },
       isSuspended: {
         type: Sequelize.BOOLEAN,
-        default: false
+        defaultValue: false //by default all students are not suspended
       }
     });
   
