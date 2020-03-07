@@ -12,3 +12,7 @@ Create a database called ufinity
 Install dependency needed for the project:
 
     npm install
+
+## Authors
+
+* **Billie Thompson**
