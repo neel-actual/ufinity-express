@@ -4,7 +4,10 @@
   "description": "ufinity node assesment test",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    //Test is wrong
+    "test": "node index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "Narenthira Rao",
   "license": "MIT",
